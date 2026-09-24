@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumatif Matematika - CBT Anti Cheat</title>
+    <title>Sumatif Tengah Semester Matematika Kelas 8</title>
     
     <!-- Library MathJax untuk Rumus Matematika LaTeX -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -32,13 +32,14 @@
         #exam-page { display: none; }
         .exam-header { display: flex; justify-content: space-between; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; }
         .question-text { 
-            font-family: 'Cambria', Georgia, serif; /* Tambahan font Cambria */
-            font-size: 18px; 
+            font-family: 'Cambria', Georgia, serif; 
+            font-size: 24px; 
             margin-bottom: 20px; 
             line-height: 1.6; 
         }
         .opsi-label { 
-            font-family: 'Cambria', Georgia, serif; /* Tambahan font Cambria */
+            font-family: 'Cambria', Georgia, serif; 
+			font-size: 20px; /* Tambahkan baris ini agar huruf opsi juga membesar */
             display: block; 
             padding: 10px; 
             border: 1px solid #ddd; 
@@ -86,21 +87,21 @@
     <!-- HALAMAN LOGIN -->
     <div id="login-page" class="container">
         <div class="card">
-            <h2 style="text-align: center;">Sumatif Matematika</h2>
+            <h2 style="text-align: center;">Sumatif Tengah Semester Matematika Kelas 8</h2>
             <p style="text-align: center; color: #666;">Silakan isi identitas Anda untuk memulai ujian.</p>
             <div class="form-group">
                 <label>Nama Lengkap</label>
-                <input type="text" id="siswa-nama" placeholder="Masukkan nama..." required>
+                <input type="text" id="siswa-nama" placeholder="Masukkan nama pakai huruf kapital..." required>
             </div>
             <div class="form-group">
                 <label>Kelas</label>
-                <input type="text" id="siswa-kelas" placeholder="Misal: 8A" required>
+                <input type="text" id="siswa-kelas" placeholder="Misal: 8C" required>
             </div>
             <div class="form-group">
                 <label>No. Absen</label>
                 <input type="number" id="siswa-absen" placeholder="Misal: 12" required>
             </div>
-            <button onclick="mulaiUjian()" style="width: 100%; margin-top: 15px;">Mulai Ujian</button>
+            <button onclick="mulaiUjian()" style="width: 100%; margin-top: 15px;">Mulai Sumatif</button>
         </div>
     </div>
 
@@ -109,6 +110,7 @@
         <div class="card">
             <div class="exam-header">
                 <span id="info-siswa">Nama - Kelas</span>
+                <span id="info-timer" style="color: #dc3545; font-size: 22px;">⏳ 00:00:00</span>
                 <span id="info-soal">Soal 1/15</span>
             </div>
             
@@ -131,25 +133,31 @@
 
     <!-- HALAMAN HASIL (RESULT) -->
     <div id="result-page" class="container">
-        <div class="card" id="cetak-area">
-            <h2>Hasil Ujian Sumatif Matematika</h2>
-            <hr>
-            <div style="text-align: left; font-size: 18px; line-height: 1.8;">
-                <p><strong>Nama:</strong> <span id="res-nama"></span></p>
-                <p><strong>Kelas:</strong> <span id="res-kelas"></span></p>
-                <p><strong>No. Absen:</strong> <span id="res-absen"></span></p>
-                <p><strong>Jumlah Pelanggaran:</strong> <span id="res-pelanggaran" style="color:red; font-weight:bold;">0</span> kali</p>
+        <div class="card" id="cetak-area" style="background-color: #121212; color: #ffffff; padding: 40px; border-radius: 12px; border: 4px solid #2c3e50;">
+            <h2 style="font-size: 34px; color: #f1c40f; margin-bottom: 5px;">🎓 BUKTI UJIAN SELESAI 🎓</h2>
+            <p style="font-size: 20px; color: #aab7b8; margin-top: 0; margin-bottom: 20px;">Sumatif Tengah Semester Matematika - CBT System</p>
+            <hr style="border: 1px solid #34495e; margin-bottom: 25px;">
+            
+            <div style="text-align: left; font-size: 24px; line-height: 2.2;">
+                <p style="margin: 5px 0;">👤 <strong>Nama:</strong> <span id="res-nama" style="color: #ecf0f1;"></span></p>
+                <p style="margin: 5px 0;">🏫 <strong>Kelas:</strong> <span id="res-kelas" style="color: #ecf0f1;"></span></p>
+                <p style="margin: 5px 0;">🔢 <strong>No. Absen:</strong> <span id="res-absen" style="color: #ecf0f1;"></span></p>
+                <p style="margin: 5px 0;">⚠️ <strong>Pelanggaran:</strong> <span id="res-pelanggaran" style="color:#ff4d4d; font-weight:bold;">0</span> kali</p>
             </div>
             
-            <div class="score-display">
-                Skor: <span id="res-skor">0</span>
+            <div style="margin-top: 40px; margin-bottom: 30px;">
+                <div style="font-size: 22px; color: #bdc3c7; margin-bottom: -10px;">Skor Pilihan Ganda</div>
+                <div style="font-size: 100px; font-weight: bold; color: #2ecc71; text-shadow: 0px 0px 20px rgba(46, 204, 113, 0.4);">
+                    <span id="res-skor">0</span>
+                </div>
             </div>
-            <p style="color: #666; font-size: 14px;">*Skor uraian dinilai manual oleh Guru</p>
+            
+            <p style="color: #7f8c8d; font-size: 18px; font-style: italic; margin-top: 20px;">📝 *Nilai soal uraian akan dikoreksi secara manual oleh Guru.</p>
         </div>
         
         <div class="action-btns">
             <button class="btn-wa" onclick="kirimWhatsApp()">Kirim ke WhatsApp Guru</button>
-            <button class="btn-jpg" onclick="downloadJPG()">Simpan sebagai JPG</button>
+            <button class="btn-jpg" onclick="downloadJPG()">Simpan sebagai gambar JPEG</button>
         </div>
     </div>
 
@@ -166,18 +174,49 @@
         let answers = {}; 
         let violations = 0;
         let isExamActive = false;
+		let logPelanggaranData = []; // Array untuk menyimpan detail pelanggaran
         
-        // Konstanta Nilai (Sesuai permintaan)
+        // Timer Ujian
+        let timerInterval;
+        let waktuUjian = 3601; // <<--- PENTING: Saat ini diset 10 detik untuk testing. Ganti ke 3600 untuk 1 jam!
+        
+        // Konstanta Nilai 
         const SKOR_PG = 3;
         const SKOR_PGK = 4;
 
-        // Nomor WA Guru (Ganti dengan nomor aslimu, gunakan awalan 62)
+        // Nomor WA Guru 
         const WA_GURU = "6281231239331"; 
 
         // Audio Context untuk Sirine
         let audioCtx;
         let sirenOscillator;
         let sirenInterval;
+        let isSirenPlaying = false; 
+
+        // ==========================================
+        // FUNGSI TIMER
+        // ==========================================
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                waktuUjian--;
+                
+                let jam = Math.floor(waktuUjian / 3600);
+                let menit = Math.floor((waktuUjian % 3600) / 60);
+                let detik = waktuUjian % 60;
+                
+                jam = jam < 10 ? "0" + jam : jam;
+                menit = menit < 10 ? "0" + menit : menit;
+                detik = detik < 10 ? "0" + detik : detik;
+                
+                document.getElementById('info-timer').innerText = `⏳ ${jam}:${menit}:${detik}`;
+                
+                if (waktuUjian <= 0) {
+                    clearInterval(timerInterval);
+                    alert("⏳ WAKTU HABIS! Ujian Anda akan dikumpulkan secara otomatis oleh sistem.");
+                    selesaiUjian(true); 
+                }
+            }, 1000); 
+        }
 
         // ==========================================
         // FUNGSI PENGACAKAN (FISHER-YATES SHUFFLE)
@@ -207,35 +246,29 @@
             studentData = { nama, kelas, absen };
             document.getElementById('info-siswa').innerText = `${nama} - ${kelas} (${absen})`;
 
-            // Memisahkan dan mengacak soal per bagian
             let pgTunggal = bankSoal.filter(q => q.tipe === 'pg_tunggal');
             let pgKompleks = bankSoal.filter(q => q.tipe === 'pg_kompleks');
             let uraian = bankSoal.filter(q => q.tipe === 'uraian');
 
-            // Mengacak urutan soal tiap bagian
             pgTunggal = shuffleArray(pgTunggal);
             pgKompleks = shuffleArray(pgKompleks);
             uraian = shuffleArray(uraian);
 
-            // Mengacak Opsi Jawaban dalam PG Tunggal & Kompleks
             pgTunggal.forEach(q => {
                 let optionsWithFlag = q.opsi.map((teks, i) => ({ teks: teks, isCorrect: i === q.jawabanBenar }));
                 q.opsiAcak = shuffleArray(optionsWithFlag);
             });
 
             pgKompleks.forEach(q => {
-                q.opsiAcak = shuffleArray(q.opsi); // opsi pada soal.js PGK sudah berbentuk object {teks, benar}
+                q.opsiAcak = shuffleArray(q.opsi); 
             });
 
-            // Menggabungkan kembali (PG Tunggal dulu, lalu Kompleks, lalu Uraian)
             examQuestions = [...pgTunggal, ...pgKompleks, ...uraian];
 
-            // Inisialisasi Audio Engine (Syarat browser: harus ada interaksi klik user dulu)
             if(!audioCtx) {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             }
 
-            // Pindah Halaman & Aktifkan Fullscreen
             document.getElementById('login-page').style.display = 'none';
             document.getElementById('exam-page').style.display = 'block';
             
@@ -244,6 +277,9 @@
             isExamActive = true;
             renderNavPanel();
             renderQuestion();
+            
+            // Pemicu Timer Dimulai
+            startTimer();
         }
 
         // ==========================================
@@ -259,7 +295,6 @@
 
             if (q.tipe === 'pg_tunggal') {
                 q.opsiAcak.forEach((opt, idx) => {
-                    // PERBAIKAN: Menyimpan dan mengecek berdasarkan Index Pilihan (idx)
                     let isChecked = (answers[q.id] !== undefined && answers[q.id] === idx) ? "checked" : "";
                     html += `
                     <label class="opsi-label">
@@ -303,7 +338,7 @@
                 document.getElementById('btn-next').style.display = 'inline-block';
                 document.getElementById('btn-finish').style.display = 'none';
             }
-            
+
             updateNavActive();
         }
 
@@ -315,7 +350,6 @@
         function simpanJawaban(soalId, tipe) {
             if (tipe === 'pg_tunggal') {
                 const checked = document.querySelector(`input[name="soal_${soalId}"]:checked`);
-                // PERBAIKAN: Menyimpan urutan angka indeks (0, 1, 2, dst) dari jawaban yang diklik
                 answers[soalId] = parseInt(checked.value); 
             } 
             else if (tipe === 'pg_kompleks') {
@@ -352,7 +386,6 @@
                 btn.className = 'nav-btn';
                 btn.innerText = idx + 1;
                 
-                // Jika soal memiliki jawaban (ada di object answers)
                 if (answers[q.id] !== undefined) {
                     btn.classList.add('answered');
                 }
@@ -377,9 +410,13 @@
         // ==========================================
         // PERHITUNGAN SKOR & SELESAI UJIAN
         // ==========================================
-        function selesaiUjian() {
-            if(confirm("Apakah Anda yakin ingin menyelesaikan ujian? Anda tidak bisa kembali setelah ini.")) {
+        function selesaiUjian(isAuto = false) {
+            
+            if (isAuto || confirm("Apakah Anda yakin ingin menyelesaikan ujian? Anda tidak bisa kembali setelah ini.")) {
+                
                 isExamActive = false;
+                if(timerInterval) clearInterval(timerInterval); 
+                
                 if(document.fullscreenElement) {
                     document.exitFullscreen();
                 }
@@ -388,7 +425,6 @@
 
                 examQuestions.forEach(q => {
                     if (q.tipe === 'pg_tunggal') {
-                        // PERBAIKAN: Mengekstrak indeks jawaban, lalu mengecek apakah indeks itu benar
                         const selectedIdx = answers[q.id];
                         if (selectedIdx !== undefined && q.opsiAcak[selectedIdx].isCorrect === true) {
                             totalSkor += SKOR_PG;
@@ -398,6 +434,23 @@
                         if (answers[q.id + "_score"] === true) totalSkor += SKOR_PGK;
                     }
                 });
+
+                // KIRIM OTOMATIS KE GOOGLE SPREADSHEET
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbwKUQH70_SAmNlhcplwILDeulGq0_JfE4172xv3qvk5466rbeBzzQhcCxSWnstQKwn_/exec';
+                
+                const formData = new FormData();
+                formData.append('nama', studentData.nama);
+                formData.append('kelas', studentData.kelas);
+                formData.append('absen', studentData.absen);
+                formData.append('skor', totalSkor);
+                formData.append('pelanggaran', violations);
+                // TAMBAHAN: Kirim data log riwayat pelanggaran (diubah jadi format teks JSON)
+                formData.append('log_pelanggaran', JSON.stringify(logPelanggaranData)); 
+
+                fetch(scriptURL, { method: 'POST', body: formData })
+// ... sisanya sama
+                    .then(response => console.log('Data berhasil masuk ke Spreadsheet!'))
+                    .catch(error => console.error('Gagal mengirim ke Spreadsheet', error.message));
 
                 document.getElementById('exam-page').style.display = 'none';
                 document.getElementById('result-page').style.display = 'block';
@@ -416,13 +469,11 @@
         function kirimWhatsApp() {
             const skor = document.getElementById('res-skor').innerText;
             
-            // Logika peringatan pelanggaran bersyarat
             let teksPelanggaran = `✅ *Pelanggaran:* 0 (Aman)`;
             if (violations > 0) {
                 teksPelanggaran = `⚠️ *Pelanggaran:* ${violations} kali%0A❗️ _(Catatan: Terdapat riwayat pelanggaran sistem! Bersiap untuk kemungkinan pengurangan skor akhir dari guru sebagai sanksi.)_`;
             }
 
-            // Merakit pesan dengan tambahan emoji dan perubahan teks
             const pesan = `🎓 *HASIL SUMATIF MATEMATIKA* 🎓%0A%0A👤 Nama: ${studentData.nama}%0A🏫 Kelas: ${studentData.kelas}%0A🔢 No. Absen: ${studentData.absen}%0A%0A*📊 Skor Pilihan Ganda: ${skor}*%0A${teksPelanggaran}%0A%0A📝 _*) Skor soal uraian belum termasuk_`;
             
             window.open(`https://wa.me/${WA_GURU}?text=${pesan}`, '_blank');
@@ -441,21 +492,26 @@
         // ==========================================
         // SISTEM ANTI CHEAT & SIRINE
         // ==========================================
-        
-        let isSirenPlaying = false; // PERBAIKAN: Tambahkan kunci penanda status sirine
-
-        function triggerCheat() {
+        function triggerCheat(jenisPelanggaran) {
             if(!isExamActive) return;
             
-            // Catat pelanggaran dan tampilkan layar merah
             violations++;
+            
+            // Catat waktu lokal saat pelanggaran terjadi
+            let now = new Date();
+            let waktuStr = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+            
+            // Simpan ke memori log
+            logPelanggaranData.push({
+                waktu: waktuStr,
+                jenis: jenisPelanggaran
+            });
+
             document.getElementById('cheat-screen').style.display = 'flex';
             
-            // PERBAIKAN: Jika sirine sudah bunyi, jangan buat sirine baru lagi!
             if (isSirenPlaying) return; 
             isSirenPlaying = true;
             
-            // Bunyikan Sirine (Web Audio API)
             if(audioCtx.state === 'suspended') audioCtx.resume();
             sirenOscillator = audioCtx.createOscillator();
             sirenOscillator.type = 'square';
@@ -473,49 +529,34 @@
 
         function stopSirenAndResume() {
             document.getElementById('cheat-screen').style.display = 'none';
-            
-            // PERBAIKAN: Bersihkan interval dan hancurkan objek audio dengan benar
-            if (sirenInterval) {
-                clearInterval(sirenInterval);
-                sirenInterval = null;
-            }
+            if (sirenInterval) { clearInterval(sirenInterval); sirenInterval = null; }
             if (sirenOscillator) {
-                try {
-                    sirenOscillator.stop();
-                    sirenOscillator.disconnect();
-                } catch(e) {}
+                try { sirenOscillator.stop(); sirenOscillator.disconnect(); } catch(e) {}
                 sirenOscillator = null;
             }
-            
-            isSirenPlaying = false; // Buka kembali kunci sirine
-            
-            // Kembalikan ke mode fullscreen
+            isSirenPlaying = false; 
             try { document.documentElement.requestFullscreen(); } catch(e) {}
         }
 
-        // 1. Deteksi Hilang Fokus & Pindah Tab
-        window.addEventListener("blur", () => { if(isExamActive) triggerCheat(); });
-        document.addEventListener("visibilitychange", () => { if(document.hidden && isExamActive) triggerCheat(); });
+        // Pendeteksian Tipe Pelanggaran Spesifik
+        window.addEventListener("blur", () => { if(isExamActive) triggerCheat("Kehilangan Fokus / Buka Aplikasi Lain"); });
+        document.addEventListener("visibilitychange", () => { if(document.hidden && isExamActive) triggerCheat("Pindah Tab Browser"); });
         
-        // 2. Deteksi Keluar Fullscreen (Esc)
         document.addEventListener("fullscreenchange", () => {
-            if (!document.fullscreenElement && isExamActive) triggerCheat();
+            if (!document.fullscreenElement && isExamActive) triggerCheat("Keluar Mode Fullscreen (Esc)");
         });
 
-        // 3. Blokir Copy Paste, Klik Kanan
         document.addEventListener('contextmenu', e => e.preventDefault());
-        document.addEventListener('copy', e => { e.preventDefault(); if(isExamActive) triggerCheat(); });
+        document.addEventListener('copy', e => { e.preventDefault(); if(isExamActive) triggerCheat("Mencoba Copy (Ctrl+C)"); });
         document.addEventListener('paste', e => e.preventDefault());
 
-        // 4. Blokir Shortcut Keyboard (F12, Inspect, PrintScreen)
         document.addEventListener('keyup', (e) => {
-            if(e.key === "PrintScreen" && isExamActive) triggerCheat();
+            if(e.key === "PrintScreen" && isExamActive) triggerCheat("Screenshot (PrintScreen)");
         });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u')) {
-                e.preventDefault();
-                if(isExamActive) triggerCheat();
-            }
+            if (e.key === 'F12') { e.preventDefault(); if(isExamActive) triggerCheat("Inspect Element (F12)"); }
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); if(isExamActive) triggerCheat("Inspect Element (Ctrl+Shift+I)"); }
+            if (e.ctrlKey && e.key === 'u') { e.preventDefault(); if(isExamActive) triggerCheat("Lihat Source Code (Ctrl+U)"); }
         });
     </script>
 </body>
